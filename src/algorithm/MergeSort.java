@@ -5,21 +5,21 @@ import java.util.ArrayList;
 public class MergeSort implements SortAlgorithm{
 
 	@Override
-	public void sort(ArrayList<Integer> list, int mode) {
-		mergeSort(list, 0, list.size()-1, mode);
+	public void sort(ArrayList<Integer> list) {
+		mergeSort(list, 0, list.size()-1);
 	}
 	
 
-	private void mergeSort(ArrayList<Integer> list, int left, int right, int mode) {
+	private void mergeSort(ArrayList<Integer> list, int left, int right) {
 		if(left == right) return;
 		int mid = (right + left) / 2;
 		
-		mergeSort(list, left, mid, mode);
-		mergeSort(list, mid+1, right, mode);
-		merge(list, left, mid, right, mode);
+		mergeSort(list, left, mid);
+		mergeSort(list, mid+1, right);
+		merge(list, left, mid, right);
 	}
 	
-	private void merge(ArrayList<Integer> list, int left, int mid, int right, int mode) {
+	private void merge(ArrayList<Integer> list, int left, int mid, int right) {
 		
 		int s1 = mid - left + 1; // Size of Left Subarray
 		int s2 = right - mid; // Size of Right Subarray
@@ -42,29 +42,17 @@ public class MergeSort implements SortAlgorithm{
 		// k denotes the index of the list that is being modified
 		int k = left;
 		
-		if(mode == ASCENDING) {
-			while(i < s1 && j < s2) {
-				if(L[i] <= R[j]) {
-					list.set(k, L[i]);
-					i++;
-				} else {
-					list.set(k, R[j]);
-					j++;
-				}
-				k++;
+		while(i < s1 && j < s2) {
+			if(L[i] <= R[j]) {
+				list.set(k, L[i]);
+				i++;
+			} else {
+				list.set(k, R[j]);
+				j++;
 			}
-		} else {
-			while(i < s1 && j < s2) {
-				if(L[i] >= R[j]) {
-					list.set(k, L[i]);
-					i++;
-				} else {
-					list.set(k, R[j]);
-					j++;
-				}
-				k++;
-			}
+			k++;
 		}
+		
 		
 		// Append remaining data from left subarray, if any
 		while(i < s1) {
