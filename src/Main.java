@@ -10,7 +10,7 @@ public class Main {
 	
 	public Main() {
 		ArrayList<Integer> list = new ArrayList<>();
-		SortAlgorithm sorter = new QuickSort();
+		SortAlgorithm sorter = new SelectionSort();
 		
 		for(int i=5500; i>0; i--) {
 			list.add(i);
