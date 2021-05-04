@@ -10,16 +10,17 @@ public class Main {
 	
 	public Main() {
 		ArrayList<Integer> list = new ArrayList<>();
-		SortAlgorithm sorter = new BubbleSort();
+		SortAlgorithm sorter = new QuickSort();
 		
 		for(int i=5500; i>0; i--) {
 			list.add(i);
 		}
 		
-		System.out.println(System.currentTimeMillis());
-		sorter.sort(list, SortAlgorithm.ASCENDING);
-		System.out.println(System.currentTimeMillis());
+		long start = System.currentTimeMillis();
+		sorter.sort(list);
+		long end = System.currentTimeMillis();
 		
+		System.out.printf("%d ms\n", end-start);
 		printList(list);
 	}
 	
