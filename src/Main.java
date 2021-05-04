@@ -10,7 +10,7 @@ public class Main {
 	
 	public Main() {
 		ArrayList<Integer> list = new ArrayList<>();
-		SortAlgorithm sorter = new SelectionSort();
+		SortAlgorithm sorter = new InsertionSort();
 		
 		for(int i=5500; i>0; i--) {
 			list.add(i);
@@ -21,7 +21,6 @@ public class Main {
 		long end = System.currentTimeMillis();
 		
 		System.out.printf("%d ms\n", end-start);
-		printList(list);
 	}
 	
 
